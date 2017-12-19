@@ -1,20 +1,22 @@
-const sessionStorage = require('web-storage')
+const sessionStorage = require('web-storage')().sessionStorage
+import React from 'react'
+import { AsyncStorage} from 'react-native'
 
-class Auth {
+class Auth extends React.Component {
   static authenticateToken (token) {
-    sessionStorage.setItem('token', token)
+    sessionStorage.set('token', token)
   }
 
   static isUserAuthenticated () {
-    return sessionStorage.getItem('token') !== null
+    return sessionStorage.get('token') !== undefined
   }
 
   static deauthenticateUser () {
-    sessionStorage.removeItem('token')
+    sessionStorage.remove('token')
   }
 
   static getToken () {
-    return sessionStorage.getItem('token')
+    return sessionStorage.get('token')
   }
 }
 
