@@ -88,9 +88,9 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
    render () {
      return (
-       <View style={}>
+       <View>
        <Router>
-         <Route exact path='/' component={Home} />
+         <Route exact path='/' />
         <Text>Dummy Text</Text>
          </Router>
        </View>
