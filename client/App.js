@@ -88,9 +88,11 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
    render () {
      return (
-       <View style={styles.container}>
-         <Text>Open up App.js to start workin!</Text>
-         {this.state.auth ? <UserProfile /> : <RegisterForm handleSubmit={this.handleSubmit} changeState={this.changeState.bind(this)} />}
+       <View style={}>
+       <Router>
+         <Route exact path='/' component={Home} />
+        <Text>Dummy Text</Text>
+         </Router>
        </View>
      )
    }
