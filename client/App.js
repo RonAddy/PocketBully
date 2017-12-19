@@ -1,9 +1,11 @@
  import React from 'react'
- import { StyleSheet, Text, View } from 'react-native'
+ import { StyleSheet, Text, View, Image } from 'react-native'
  import RegisterForm from './components/RegisterForm'
  import Auth from './components/modules/Auth'
  import UserProfile from './components/UserProfile'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+ import Login from './components/Login'
+ import Landing from './components/Landing'
+ import {Router, Actions, Scene, Stack} from 'react-native-router-flux'
 
  export default class App extends React.Component {
    constructor () {
@@ -86,13 +88,20 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
      }
    }
 
+   setNativeProps(props: Object) {
+this.refs[''].setNativeProps(props)
+}
+
    render () {
      return (
        <View>
        <Router>
-         <Route exact path='/' />
-        <Text>Dummy Text</Text>
-         </Router>
+         <Stack key="root">
+           <Scene key="login" component={Landing} hideNavBar initial />
+           <Scene key="Register" component={RegisterForm} title="Register"/>
+           <Scene key="Profile" component={UserProfile}/>
+         </Stack>
+        </Router>
        </View>
      )
    }
