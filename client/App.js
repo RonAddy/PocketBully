@@ -5,7 +5,7 @@
  import UserProfile from './components/UserProfile'
  import Login from './components/Login'
  import Landing from './components/Landing'
- import {Router, Actions, Scene, Stack} from 'react-native-router-flux'
+ import { StackNavigator} from 'react-navigation'
 
  export default class App extends React.Component {
    constructor () {
@@ -20,6 +20,7 @@
      }
 
      this.handleSubmit = this.handleSubmit.bind(this)
+     this.changeState = this.changeState.bind(this)
    }
 
    handleSubmit () {
@@ -88,21 +89,22 @@
      }
    }
 
-   setNativeProps(props: Object) {
-this.refs[''].setNativeProps(props)
-}
-
    render () {
+
+     const navigation = StackNavigator({
+       Login: {
+         screen: Login
+       },
+
+         Register: {
+           screen: RegisterForm
+         }
+       })
+
      return (
-       <View>
-       <Router>
-         <Stack key="root">
-           <Scene key="login" component={Landing} hideNavBar initial />
-           <Scene key="Register" component={RegisterForm} title="Register"/>
-           <Scene key="Profile" component={UserProfile}/>
-         </Stack>
-        </Router>
-       </View>
+       <View style={styles.container}>
+       <Landing navigation={navigation} />
+        </View>
      )
    }
 }
@@ -110,8 +112,8 @@ this.refs[''].setNativeProps(props)
  const styles = StyleSheet.create({
    container: {
      flex: 1,
-     backgroundColor: '#fff',
      alignItems: 'center',
-     justifyContent: 'center'
+     justifyContent: 'center',
+     backgroundColor: 'rgb(123,101,210)',
    }
  })

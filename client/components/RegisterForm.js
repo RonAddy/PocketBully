@@ -6,8 +6,7 @@ export default class RegisterForm extends Component {
   render () {
     return (
       <View style={styles.RegisterForm}>
-
-        <View style={styles.FormContainer}>
+        <View>
           <TextInput onChangeText={val => this.props.changeState('username', val)} placeholder='Username' style={styles.FormInput} />
           <TextInput onChangeText={val => this.props.changeState('password', val)} placeholder='Password' secureTextEntry style={styles.FormInput} />
           <TextInput onChangeText={val => this.props.changeState('email', val)} placeholder='Email' style={styles.FormInput} />
@@ -25,24 +24,24 @@ export default class RegisterForm extends Component {
 const styles = StyleSheet.create({
   RegisterForm: {
     borderStyle: 'solid',
-    borderColor: 'black',
-    borderWidth: 2.5
+    borderWidth: 2.5,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   FormInput: {
     borderBottomWidth: 3.5,
     borderBottomColor: 'black',
     marginBottom: 12,
-    fontSize: 25
-  },
-
-  FormContainer: {
-    margin: 25
+    fontSize: 25,
+    width: 200
   },
 
   RegisterButton: {
     borderStyle: 'dotted',
     borderColor: 'green',
-    borderWidth: 1.5
+    borderWidth: 1.5,
+    height: 100
   }
 })

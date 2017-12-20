@@ -1,6 +1,6 @@
-const sessionStorage = require('web-storage')().sessionStorage
 import React from 'react'
-import { AsyncStorage} from 'react-native'
+
+const sessionStorage = require('web-storage')().sessionStorage
 
 class Auth extends React.Component {
   static authenticateToken (token) {
